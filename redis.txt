@@ -1,0 +1,38 @@
+what is redis?(multi-model db)
+(Remote dictionary DB)
+In-memory Db which is stored in RAM.
+often used as cache
+it can be used as primary DB
+it can be in multiple formats
+it stores in key value
+
+while creating large scale proj we need to have different types of db
+
+but in redis it already has this alternatives and modules
+
+redisearch - elastic search
+redisgraph - graphql
+redisjson - mongo
+
+Advantages
+* Faster(Faster run and test) Because its Schemaless Because whenever restarting test or  run redis memory empties
+* Replica is used for not loosing data , Other methods
+  1.Snapshots (few minutes only)
+  2.append only file(more durable but slower)
+  3. we can combine both
+PS. Best practise is to separate persistent storage from disk storage
+
+
+It's faster because it uses flask disks(ssd) The most used data will be stored on RAM and less used stored in ssd. which saves infrastructure costs
+
+Scaling :
+1.Clustering : Primary for read and write which can have multiple replica. So if one fails another can step up
+2. Sharding : Subsets of Data i.e shards which have different operation. Re-sharding can give more shards
+
+Using it in Kubernetes:
+
+Because Redis is solely used for micro-services the main method for micro-services is kube. It's comman use cases
+
+1.creating redis cluster
+2. all redis operations like sharding , clustering , replicating and scaling is done by kube operators.
+3. redis operator in kube is automates the deployment and config. also like scaling ,backups and recovery etc.
